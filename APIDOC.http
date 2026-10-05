@@ -30,6 +30,8 @@ Accept: application/json
 # api call for delete
 
 
+
+====================================
 #=====> serializers endpoint <=======
 
 ###
@@ -85,6 +87,9 @@ Content-Type: application/json
 
 
 
+
+===================================
+
 #api call for admin user
 
 ###
@@ -98,7 +103,10 @@ Content-Type: application/json
 }
 
 
-# turf booking api
+
+===================================
+
+#  booking api
 
 # api call for listing
 
@@ -116,8 +124,23 @@ Content-Type: application/json
     "patient_name":"habeeb",
     "phone":"12345678",
     "doctor":2,
-    "appointment_date":"2026-10-1",
+    "appointment_date":"2026-10-5",
     "problem":"sick"
 
 
+}
+
+
+================================
+
+===# booking_v2
+# api call for create
+###
+POST  http://127.0.0.1:8000/v2/booking/signup/
+Content-Type: application/json
+
+{
+    "username":"user",
+    "email":"user@gmail.com",
+    "password":"user@123"
 }

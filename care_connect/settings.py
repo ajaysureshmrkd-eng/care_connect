@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "staff",
     "staff_v2",
     'bookings',
+    'booking_v2',
 ]
 
 MIDDLEWARE = [

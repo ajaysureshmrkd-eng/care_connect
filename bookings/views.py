@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 from bookings.models import Appointment
 from bookings.serializers import AppointmentSerializer
-
+from staff.models import Doctor
 
 
 class AppointmentListCreateView(APIView):
@@ -33,22 +33,37 @@ class AppointmentListCreateView(APIView):
 
             appointment_date =cleaned_data.get("appointment_date")
 
+            new_token =0
+
             last_appointment_object =Appointment.objects.filter(doctor=doctor,appointment_date=appointment_date).last()
 
             if last_appointment_object:
 
-                new_token =last_appointment_object.token +1
+
+                new_token =last_appointment_object.token_number +1
 
             else:
 
                 new_token =1
 
-                
-                return Response(data={"token":new_token,"status":"booked"})
+            doctor_object =Doctor.objects.get(id =doctor)
+
+            cleaned_data =[doctor]=doctor_object
+
+            Appointment.objects.create(**cleaned_data,token_number=new_token)
+
+            respones_data ={
+                "status":"booked",
+                "token":new_token
+            }
+
+            return Response (data=respones_data)
 
         else:
 
             return Response (data=serializer_inst.errors)
+
+                
 
            
 
