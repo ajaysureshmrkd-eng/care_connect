@@ -21,7 +21,7 @@ Content-Type: application/json
 # api call for fetching for details
 
 ###
-GET http://127.0.0.1:8000/doctors/3/
+GET http://127.0.0.1:8000/doctors/5/
 Accept: application/json
 
 
@@ -37,6 +37,7 @@ Accept: application/json
 ###
 GET http://127.0.0.1:8000/v2/doctors/
 Accept: application/json
+Authorization: Basic username:username
 
 
 
@@ -121,10 +122,10 @@ POST http://127.0.0.1:8000/appointments/
 Content-Type: application/json
 
 {
-    "patient_name":"habeeb",
+    "patient_name":"abhi",
     "phone":"12345678",
     "doctor":2,
-    "appointment_date":"2026-10-5",
+    "appointment_date":"2026-10-10",
     "problem":"sick"
 
 
@@ -144,3 +145,69 @@ Content-Type: application/json
     "email":"user@gmail.com",
     "password":"user@123"
 }
+
+
+===================================================
+#appointment booking_v2
+
+#api call for listing
+
+###
+GET http://127.0.0.1:8000/v2/booking/appointments/
+Accept: application/json
+Authorization: Basic user:user@123
+
+
+#api call for adding
+
+###
+POST http://127.0.0.1:8000/v2/booking/appointments/
+Content-Type: application/json
+Authorization: Basic user:user@123
+
+{
+    "patient_name":"habeeb",
+    "phone":"16543332",
+    "doctor":4,
+    "appointment_date":"2026-10-15",
+    "problem":"sick"
+
+
+}
+
+
+# api call for retrieve
+
+###
+GET  http://127.0.0.1:8000/v2/booking/appointments/5/
+Accept: application/json
+Authorization: Basic user:user@123
+
+
+# api call for update
+
+###
+PUT http://127.0.0.1:8000/v2/booking/appointments/8/
+Content-Type: application/json
+Authorization: Basic user:user@123
+
+{
+  "id": 8,
+  "patient_name": "habeeb",
+  "phone": "12398866",
+  "appointment_date": "2026-10-26",
+  "token_number": 2,
+  "appointment_time": "10:15:00",
+  "problem": "sick",
+  "created_at": "2026-10-07T05:23:01.255176Z",
+  "doctor": 4
+}
+
+
+# api call for delete
+
+###
+DELETE http://127.0.0.1:8000/v2/booking/appointments/8/
+Accept: application/json
+Authorization: Basic user:user@123
+

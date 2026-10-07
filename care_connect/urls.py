@@ -43,6 +43,9 @@ urlpatterns = [
 
     path('appointments/',AppointmentListCreateView.as_view()),
 
+    
+
+    # booking_v2 
 
     path('v2/booking/',include("booking_v2.urls"))
 ]
